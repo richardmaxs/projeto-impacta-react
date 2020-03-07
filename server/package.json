@@ -4,6 +4,7 @@
   "description": "Servidor API curso",
   "main": "src/loader.js",
   "scripts": {
+    "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Richard",
