@@ -1,27 +1,25 @@
-// Arquivo responsavel por configurar o servidor Node/Express
-
+// Arquivo responsável por configurar o servidor Node/Express
 const port = 3200;
 
-//middlewares - singletons: commons js
 const bodyParser = require('body-parser');
 const express = require('express');
+const allowCors = require('./cors');
 
-const server = express();
+const server = express(); 
 
 //para toda requisição que chegar, use o bodyparser para
 //interpretar chegadas no formato urlencoded
 server.use(bodyParser.urlencoded({ extended: true }))
 
 //considera o formato json no corpo da requisição
-server.use(bodyParser.json());
+server.use(bodyParser.json()); 
 
-server.get('/', function (req, res){
-    res.send('Hello Word');
+server.use(allowCors);
+
+server.get('/', function (req, res) {
+    res.send('Hello World!');
 });
 
-server.listen(port, function () {
- //template string (observe a crase)
- console.log(`servidor no ar, na porta ${port}`);
-});
+server.listen(port, _ => console.log(`servidor no ar, na porta ${port}`));
 
 module.exports = server;
